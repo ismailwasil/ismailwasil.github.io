@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISMAIL | Professional IT Programmer Portfolio</title>
+    <meta name="description" content="Portofolio Profesional Ismail - IT Programmer & Computer Engineering ITS Alumni">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold tracking-tighter">
+                <span class="text-sky-400">IS</span>MAIL<span class="text-sky-400">.</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+                <a href="#home" class="hover:text-sky-400 transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-sky-400 transition-colors">Tentang</a>
+                <a href="#tech" class="hover:text-sky-400 transition-colors">Stack</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Proyek</a>
+                <a href="#experience" class="hover:text-sky-400 transition-colors">Pengalaman</a>
+                <a href="#contact"
+                    class="px-4 py-2 bg-sky-500/10 text-sky-400 rounded-full border border-sky-500/20 hover:bg-sky-500 hover:text-white transition-all">Kontak</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-slate-400" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl absolute top-full left-0 w-full border-b border-white/5 py-6 px-6 flex flex-col space-y-4">
+            <a href="#home" onclick="toggleMenu()" class="text-lg">Beranda</a>
+            <a href="#about" onclick="toggleMenu()" class="text-lg">Tentang</a>
+            <a href="#tech" onclick="toggleMenu()" class="text-lg">Stack</a>
+            <a href="#projects" onclick="toggleMenu()" class="text-lg">Proyek</a>
+            <a href="#experience" onclick="toggleMenu()" class="text-lg">Pengalaman</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-lg text-sky-400">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6 relative overflow-hidden">
+        <!-- Decoration Background -->
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-sky-600/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-600/20 blur-[120px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <h2 class="text-sky-400 font-mono mb-4 flex items-center gap-2">
+                    <span class="w-8 h-[1px] bg-sky-400"></span>
+                    Halo, Nama Saya
+                </h2>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none">
+                    ISMAIL <br>
+                    <span class="text-gradient">IT DEVELOPER</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
+                    Menciptakan solusi digital inovatif melalui kode yang elegan dan efisien.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects"
+                        class="px-8 py-4 bg-sky-500 rounded-xl font-bold hover:bg-sky-400 transition-all transform hover:-translate-y-1 shadow-lg shadow-sky-500/20">
+                        Lihat Proyek
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-4 glass border-white/10 rounded-xl font-bold hover:bg-white/5 transition-all">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="w-72 h-72 md:w-[450px] md:h-[450px] relative">
+                    <!-- Photo placeholder / Abstract Element -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-sky-500 to-indigo-600 rounded-3xl rotate-6 opacity-20 floating">
+                    </div>
+                    <div class="absolute inset-0 glass border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+                        <!-- Replace with real photo if available -->
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-slate-800/50">
+                            <i data-lucide="code-2" class="w-24 h-24 text-sky-400/30 mb-4"></i>
+                            <span class="text-slate-500 font-mono">ITS Alumni 2021</span>
+                            <img src="assets/img/IMG_2337.JPEG" alt="Ismail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-up">
+                    <h3 class="text-4xl font-bold mb-8">Eksplorasi <span class="text-sky-400">Profil</span></h3>
+                    <div class="space-y-6 text-slate-300 text-lg">
+                        <p>
+                            Lahir di <span class="text-white font-semibold">Sampang, 1 Februari 1998</span>, saya tumbuh
+                            dengan hasrat besar di dunia teknologi. Saat ini saya fokus dalam pekerjaan <span
+                                class="text-sky-400">Pengembangan Aplikasi/Web</span> dan pengembangan sistem yang
+                            terintegrasi dan berkelanjutan. Perjalanan akademis di <span class="text-sky-400">Teknik
+                                Komputer ITS</span> membentuk pola pikir sistematis dalam
+                            memecahkan masalah kompleks.
+                        </p>
+                        <p>
+                            Setelah lulus di tahun 2021, saya mendedikasikan diri sepenuhnya sebagai <span
+                                class="text-sky-400">IT Programmer</span>. Saya percaya bahwa setiap baris kode harus
+                            memberikan dampak nyata bagi pengguna dan masyarakat.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="glass p-4">
+                                <span class="block text-2xl font-bold text-sky-400">04+</span>
+                                <span class="text-sm text-slate-400 tracking-wider">TAHUN PENGALAMAN</span>
+                            </div>
+                            <div class="glass p-4">
+                                <span class="block text-2xl font-bold text-sky-400">10+</span>
+                                <span class="text-sm text-slate-400 tracking-wider">PROYEK SELESAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-6" data-aos="fade-left">
+                    <div class="glass p-6 hover:bg-white/5 transition-all cursor-default">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-sky-500/20 rounded-lg text-sky-400">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">S1 Teknik Komputer</h4>
+                                <p class="text-slate-400 text-sm italic">Institut Teknologi Sepuluh Nopember (ITS)</p>
+                                <p class="text-slate-500 mt-2">Lulus Tahun 2021 - Fokus pada Sistem Tertanam dan
+                                    Rekayasa Perangkat Lunak.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="glass p-6 hover:bg-white/5 transition-all cursor-default border-sky-500/30 shadow-lg shadow-sky-500/5">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-500/20 rounded-lg text-indigo-400">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">Domisili</h4>
+                                <p class="text-slate-400">Sampang, Madura, Jawa Timur</p>
+                                <p class="text-slate-500 mt-2 text-sm">Berkomitmen membangun daerah melalui inovasi
+                                    digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-16" data-aos="fade-up">Teknologi <span
+                    class="text-sky-400">&</span> Tools</h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6">
+                <!-- Tech Item 1 -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-sky-500/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="code-xml" class="text-sky-400"></i>
+                    </div>
+                    <span class="font-bold text-sm">Fullstack Dev</span>
+                </div>
+                <!-- Tech Item 2 -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <div
+                        class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-400 font-bold">
+                        JS</div>
+                    <span class="font-bold text-sm">JavaScript</span>
+                </div>
+                <!-- Tech Item 3 -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <div
+                        class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 font-bold">
+                        PHP</div>
+                    <span class="font-bold text-sm">CI/Laravel/PHP</span>
+                </div>
+                <!-- Tech Item 4 -->
+                <!-- <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <div
+                        class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 font-bold">
+                        React</div>
+                    <span class="font-bold text-sm">React JS</span>
+                </div> -->
+                <!-- Tech Item 5 -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="database" class="text-indigo-400"></i>
+                    </div>
+                    <span class="font-bold text-sm">Database Management</span>
+                </div>
+                <!-- Tech Item 6 -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
+                        <i data-lucide="git-branch" class="text-green-400"></i>
+                    </div>
+                    <span class="font-bold text-sm">Git & CI/CD</span>
+                </div>
+                <!-- Additional -->
+                <!-- Stack Item -->
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="600">
+                    <div class="p-4 bg-indigo-500/10 rounded-2xl group-hover:bg-indigo-500/20 transition-all">
+                        <i data-lucide="layout" class="text-indigo-400"></i>
+                    </div>
+                    <span class="font-medium text-sm">Web Apps</span>
+                </div>
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="700">
+                    <div class="p-4 bg-green-500/10 rounded-2xl group-hover:bg-green-500/20 transition-all">
+                        <i data-lucide="server" class="text-green-400"></i>
+                    </div>
+                    <span class="font-medium text-sm">System Architect</span>
+                </div>
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="800">
+                    <div class="p-4 bg-purple-500/10 rounded-2xl group-hover:bg-purple-500/20 transition-all">
+                        <i data-lucide="smartphone" class="text-purple-400"></i>
+                    </div>
+                    <span class="font-medium text-sm">Mobile Development</span>
+                </div>
+                <div class="tech-card glass p-8 flex flex-col items-center gap-4 transition-all duration-300"
+                    data-aos="zoom-in" data-aos-delay="900">
+                    <div class="p-4 bg-red-500/10 rounded-2xl group-hover:bg-red-500/20 transition-all">
+                        <i data-lucide="shield-check" class="text-red-400"></i>
+                    </div>
+                    <span class="font-medium text-sm">Cyber Security</span>
+                </div>
+                <!-- Additional -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-slate-950/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div data-aos="fade-right">
+                    <h3 class="text-4xl font-bold mb-4 italic">Project</h3>
+                    <p class="text-slate-400 max-w-xl text-lg">Inilah beberapa implementasi nyata dari keahlian saya
+                        dalam mengembangkan aplikasi.</p>
+                </div>
+                <!-- <div class="text-sky-400 font-medium flex items-center gap-2" data-aos="fade-left">
+                    <span>Lihat Semua Proyek</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </div> -->
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card group" data-aos="fade-up">
+                    <a href="http://103.146.132.66:61893/" target="_blank">
+                        <div
+                            class="project-image-container glass h-64 md:h-80 mb-6 bg-gradient-to-br from-slate-800 to-sky-900/40 relative overflow-hidden p-8 flex items-end pancingan">
+                            <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="p-3 bg-white/10 rounded-full text-white backdrop-blur">
+                                    <img src="assets/img/versi_barada_e2.svg" height="40%" width="40%"
+                                        alt="Versi Barada-E">
+                                    <!-- <i data-lucide="external-link"></i> -->
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="mb-4 inline-block px-3 py-1 bg-sky-500/20 rounded-full text-sky-400 text-xs font-bold uppercase tracking-widest">
+                                    Goverment Project</div>
+                                <h4 class="text-3xl font-bold text-white mb-2">Verifikasi Barang Milik Daerah
+                                </h4>
+                                <p class="text-slate-300 text-sm">Sistem digital terintegrasi untuk mendukung layanan
+                                    pengajuan Verifikasi SPM berbasis Online di Kabupaten Sampang.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card group" data-aos="fade-up" data-aos-delay="200">
+                    <a href="http://103.146.132.66:61893/admin/lasada" target="_blank">
+                        <div
+                            class="project-image-container glass h-64 md:h-80 mb-6 bg-gradient-to-br from-slate-800 to-indigo-900/40 relative overflow-hidden p-8 flex items-end pancingan">
+                            <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="p-3 bg-white/10 rounded-full text-white backdrop-blur">
+                                    <img src="assets/img/Lasada BPPKAD.svg" height="40%" width="40%" alt="Lasada">
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="mb-4 inline-block px-3 py-1 bg-indigo-500/20 rounded-full text-indigo-400 text-xs font-bold uppercase tracking-widest">
+                                    E-Gov Dashboard</div>
+                                <h4 class="text-3xl font-bold text-white mb-2">Layanan Sewa Aset Daerah</h4>
+                                <p class="text-slate-300 text-sm">Sistem digital penyewaan aset daerah Kabupaten Sampang
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h3 class="text-3xl md:text-4xl font-bold mb-20 text-center" data-aos="fade-up">
+                Jejak <span class="text-sky-400">Karir</span>
+            </h3>
+
+            <!-- Timeline Wrapper -->
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 h-full border-l-2 border-slate-800"></div>
+
+                <!-- Timeline Item -->
+                <div class="relative mb-16 flex flex-col md:flex-row md:justify-end md:odd:flex-row-reverse group"
+                    data-aos="fade-up">
+
+                    <!-- Dot -->
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full
+                        bg-sky-500 shadow-[0_0_12px_rgba(56,189,248,0.6)]
+                        group-odd:bg-sky-500 group-even:bg-slate-600" style="background-color: #02a5d6;">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="ml-12 md:ml-0 md:w-1/2
+                        md:group-odd:pr-12 md:group-odd:text-right
+                        md:group-even:pl-12">
+
+                        <span class="text-sky-400 font-mono font-bold text-sm">
+                            2021 - SEKARANG
+                        </span>
+
+                        <h4 class="text-2xl font-bold mt-2">
+                            Professional IT Programmer
+                        </h4>
+
+                        <p class="text-slate-400 mt-2 leading-relaxed">
+                            Fokus pada pengembangan aplikasi berbasis web dan mobile untuk efisiensi operasional
+                            baik di <span class="text-sky-400">Pemerintahan</span> maupun
+                            <span class="text-sky-400">Organisasi</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item -->
+                <div class="relative mb-16 flex flex-col md:flex-row md:justify-end md:odd:flex-row-reverse group"
+                    data-aos="fade-up">
+
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-600">
+                    </div>
+
+                    <div class="ml-12 md:ml-0 md:w-1/2
+                        md:group-odd:pr-12 md:group-odd:text-right
+                        md:group-even:pl-12">
+
+                        <span class="text-slate-500 font-mono font-bold text-sm">
+                            2021 (Lulus)
+                        </span>
+
+                        <h4 class="text-2xl font-bold mt-2">
+                            Alumni Teknik Komputer
+                        </h4>
+
+                        <p class="text-slate-400 mt-2 italic">
+                            Institut Teknologi Sepuluh Nopember (ITS) Surabaya.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item -->
+                <div class="relative flex flex-col md:flex-row md:justify-end md:odd:flex-row-reverse group"
+                    data-aos="fade-up">
+
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-600">
+                    </div>
+
+                    <div class="ml-12 md:ml-0 md:w-1/2
+                        md:group-odd:pr-12 md:group-odd:text-right
+                        md:group-even:pl-12">
+
+                        <span class="text-slate-500 font-mono font-bold text-sm">
+                            2017 - 2021
+                        </span>
+
+                        <h4 class="text-2xl font-bold mt-2">
+                            Masa Perkuliahan & Research
+                        </h4>
+
+                        <p class="text-slate-400 mt-2 leading-relaxed">
+                            Mempelajari fundamental hardware dan software,
+                            serta aktif dalam pengembangan riset aplikasi.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto glass p-8 md:p-16 border-white/5 overflow-hidden">
+            <div class="absolute top-0 right-0 p-4">
+                <i data-lucide="messages-square" class="w-32 h-32 text-sky-500/5 rotate-12"></i>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                <div data-aos="fade-right">
+                    <h3 class="text-4xl font-black mb-6 leading-tight">Mari Membangun <br> Sesuatu yang <span
+                            class="text-gradient">Luar Biasa</span></h3>
+                    <p class="text-slate-400 mb-10 text-lg">Apakah Anda memiliki proyek pemerintah, korporasi, atau
+                        startup? Saya siap membantu mewujudkannya.</p>
+
+                    <div class="space-y-6">
+                        <a href="mailto:ismailwasil11@gmail.com" class="flex items-center gap-4 group cursor-pointer"
+                            target="_blank">
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="p-4 glass rounded-2xl text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-500">Email Me</p>
+                                    <p class="text-white font-bold">ismailwasil11@gmail.com</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://api.whatsapp.com/send/?phone=6281913333320&text=Halo%2C+Ismail&type=phone_number&app_absent=0"
+                            class="flex items-center gap-4 group cursor-pointer" target="_blank">
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="p-4 glass rounded-2xl text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-500">WhatsApp</p>
+                                    <p class="text-white font-bold">08191 33333 20</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="space-y-4" data-aos="fade-left">
+                    <div>
+                        <input type="text" placeholder="Nama Anda"
+                            class="w-full bg-slate-900/50 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-sky-500 transition-all text-white">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Alamat Email"
+                            class="w-full bg-slate-900/50 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-sky-500 transition-all text-white">
+                    </div>
+                    <div>
+                        <textarea placeholder="Pesan Anda" rows="4"
+                            class="w-full bg-slate-900/50 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-sky-500 transition-all text-white"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-4 bg-white text-slate-950 font-black rounded-xl hover:bg-sky-400 hover:text-white transition-all transform hover:scale-[1.02]">
+                        Kirim Pesan Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 text-center text-slate-500 text-sm border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="font-extrabold text-xl text-white">
+                IS<span class="text-sky-400">MAIL.</span>
+            </div>
+            <p>&copy; 2026 Ismail. Built with <span class="text-red-500">❤</span> in Sampang, Madura.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

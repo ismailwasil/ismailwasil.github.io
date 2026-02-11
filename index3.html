@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISMAIL | IT Programmer Portfolio</title>
+    <meta name="description" content="Portofolio Profesional Ismail - IT Programmer & Alumni Teknik Komputer ITS">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9',
+                        dark: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Background Animation */
+        .bg-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter text-primary">ISMAIL<span class="text-white">.DEV</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+                <a href="#home" class="hover:text-primary transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-primary transition-colors">Profil</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Pengalaman</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projek</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Kontak</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full glass py-6 px-6 flex flex-col space-y-4 animate-fade-in">
+            <a href="#home" onclick="toggleMenu()" class="text-slate-300">Beranda</a>
+            <a href="#about" onclick="toggleMenu()" class="text-slate-300">Profil</a>
+            <a href="#experience" onclick="toggleMenu()" class="text-slate-300">Pengalaman</a>
+            <a href="#projects" onclick="toggleMenu()" class="text-slate-300">Projek</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-slate-300">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="absolute inset-0 bg-gradient opacity-50"></div>
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="inline-block px-4 py-1.5 mb-6 glass text-xs font-semibold text-primary tracking-widest uppercase"
+                data-aos="fade-up">
+                Professional IT Programmer
+            </div>
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tight" data-aos="fade-up" data-aos-delay="100">
+                Hi, Saya <span class="text-primary">Ismail</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed" data-aos="fade-up"
+                data-aos-delay="200">
+                Lulusan Teknik Komputer ITS 2021 yang fokus membangun solusi teknologi inovatif untuk infrastruktur
+                publik dan modernisasi sistem digital.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="300">
+                <a href="#projects"
+                    class="px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-sky-500 transition-all transform hover:-translate-y-1">
+                    Lihat Projek Saya
+                </a>
+                <a href="#contact"
+                    class="px-8 py-4 glass text-white font-bold rounded-2xl hover:bg-white/10 transition-all transform hover:-translate-y-1">
+                    Hubungi Saya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-950/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="glass p-8 aspect-square relative overflow-hidden flex items-center justify-center group"
+                    data-aos="fade-right">
+                    <!-- Placeholder Profile -->
+                    <div class="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center">
+                        <i data-lucide="user" class="w-32 h-32 text-slate-700"></i>
+                        <p class="mt-4 text-slate-500 text-sm">Foto Ismail</p>
+                    </div>
+                    <!-- Decorative Ring -->
+                    <div
+                        class="absolute inset-0 border-2 border-primary/20 rounded-full scale-90 group-hover:scale-100 transition-transform duration-700">
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl font-bold mb-6">Membangun Masa Depan <br><span
+                            class="text-primary text-xl">Lewat Baris Kode</span></h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Lahir di Sampang pada 1 Februari 1998, perjalanan saya di dunia IT dimulai dari kampus
+                        perjuangan, Institut Teknologi Sepuluh Nopember (ITS). Sejak lulus tahun 2021, saya berdedikasi
+                        untuk menerapkan ilmu Teknik Komputer ke dalam solusi nyata di masyarakat.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-4">
+                            <h4 class="text-primary font-bold">Lulusan</h4>
+                            <p class="text-sm text-slate-300">S1 Teknik Komputer ITS (2021)</p>
+                        </div>
+                        <div class="glass p-4">
+                            <h4 class="text-primary font-bold">Fokus</h4>
+                            <p class="text-sm text-slate-300">Web & App Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / Tech Stack -->
+    <section id="experience" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Pengalaman & Keahlian</h2>
+                <div class="h-1 w-20 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="glass p-8 group hover:border-primary/50 transition-all duration-500" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Programming</h3>
+                    <p class="text-slate-400 text-sm">Berpengalaman mengelola sistem aplikasi pemerintahan dengan stack
+                        teknologi modern.</p>
+                </div>
+                <!-- Skill 2 -->
+                <div class="glass p-8 group hover:border-primary/50 transition-all duration-500" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">System Analyst</h3>
+                    <p class="text-slate-400 text-sm">Merancang arsitektur database dan alur proses bisnis aplikasi
+                        sektor publik secara efisien.</p>
+                </div>
+                <!-- Skill 3 -->
+                <div class="glass p-8 group hover:border-primary/50 transition-all duration-500" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="layout"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="text-slate-400 text-sm">Memastikan aplikasi ramah pengguna dan responsif di berbagai
+                        perangkat cerdas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="projects" class="py-24 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16" data-aos="fade-up">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2">Projek Pilihan</h2>
+                    <p class="text-slate-400">Kontribusi nyata dalam transformasi digital daerah.</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-primary font-medium hover:underline cursor-pointer">
+                    Lihat semua projek &rarr;
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Project Card 1 -->
+                <div class="group relative glass p-4 overflow-hidden" data-aos="zoom-in-up">
+                    <div class="h-64 rounded-xl bg-slate-900 mb-6 overflow-hidden">
+                        <div class="w-full h-full flex items-center justify-center text-slate-700">
+                            <i data-lucide="monitor" class="w-16 h-16 opacity-20"></i>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-xs text-primary font-bold tracking-widest uppercase">E-Government</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Aplikasi Pemerintah Daerah Sampang</h3>
+                        <p class="text-slate-400 text-sm mb-6">Sistem terintegrasi untuk pengelolaan data dan layanan
+                            publik masyarakat Kabupaten Sampang. Meningkatkan efisiensi birokrasi hingga 40%.</p>
+                        <div class="flex gap-2">
+                            <span
+                                class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">PHP/Laravel</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">Tailwind
+                                CSS</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group relative glass p-4 overflow-hidden" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="h-64 rounded-xl bg-slate-900 mb-6 overflow-hidden">
+                        <div class="w-full h-full flex items-center justify-center text-slate-700">
+                            <i data-lucide="smartphone" class="w-16 h-16 opacity-20"></i>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <span class="text-xs text-primary font-bold tracking-widest uppercase">Digital
+                            Transformation</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-3">Dashboard Monitoring Publik</h3>
+                        <p class="text-slate-400 text-sm mb-6">Visualisasi data *real-time* untuk memantau kemajuan
+                            pembangunan infrastruktur di tingkat kabupaten secara transparan.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">React.js</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">Node.js</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-300">Charts.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Mari Berkolaborasi</h2>
+            <p class="text-slate-400 mb-12" data-aos="fade-up">Tertarik untuk membangun sistem digital atau membutuhkan
+                konsultasi teknis? Saya siap membantu.</p>
+
+            <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
+                <a href="mailto:ismail@example.com"
+                    class="glass p-8 flex items-center gap-6 hover:border-primary transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold">Email</h4>
+                        <p class="text-sm text-slate-400">ismail@its.ac.id</p>
+                    </div>
+                </a>
+                <a href="#" class="glass p-8 flex items-center gap-6 hover:border-primary transition-all">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                        <i data-lucide="linkedin"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold">LinkedIn</h4>
+                        <p class="text-sm text-slate-400">Ismail IT Programmer</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-slate-500 text-sm">
+                &copy; 2025 Ismail. Developed with Passion in Sampang.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="github"
+                        class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram"
+                        class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="twitter"
+                        class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth Scroll Enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

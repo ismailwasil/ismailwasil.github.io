@@ -1,0 +1,86 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top left, #0f172a, #020617);
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+}
+
+.glass-nav {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.project-image-container {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.project-image-container img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image-container img {
+    transform: scale(1.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+.pancingan:hover {
+    border-color: #38bdf880;
+    box-shadow: 0 0 20px #38bdf833;
+}
