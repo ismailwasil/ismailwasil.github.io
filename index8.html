@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ismail | IT Programmer Portfolio</title>
+    <meta name="description" content="Portofolio Profesional Ismail - IT Programmer & Alumni Teknik Komputer ITS">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Inter & Sora -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1',
+                        'dark-bg': '#0a0a0c',
+                        'glass-bg': 'rgba(23, 23, 26, 0.7)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Sora', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Decoration -->
+    <div class="blob top-[-100px] left-[-100px] animate-pulse"></div>
+    <div class="blob bottom-[-100px] right-[-100px] animate-pulse" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-heading font-bold tracking-tighter text-gradient">
+                ISMAIL<span class="text-white">.</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 font-medium text-sm text-gray-400">
+                <a href="#home" class="hover:text-primary transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-primary transition-colors">Profil</a>
+                <a href="#tech" class="hover:text-primary transition-colors">Tech Stack</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Project</a>
+                <a href="#contact" class="hover:text-primary transition-colors font-semibold text-white px-4 py-2 rounded-full border border-primary/30 bg-primary/10">Kontak</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-white" id="menuBtn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-4xl text-center" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/10 border border-primary/20 text-primary rounded-full">
+                Tersedia untuk Kolaborasi Strategis
+            </div>
+            <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 leading-tight">
+                Membangun Masa Depan Melalui <span class="text-gradient">Kode & Inovasi.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Halo, saya <span class="text-white font-semibold">Ismail</span>. Seorang IT Programmer lulusan Teknik Komputer ITS yang berfokus pada pengembangan solusi digital berdampak tinggi.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2">
+                    Lihat Project <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 glass-card rounded-xl font-semibold flex items-center justify-center gap-2">
+                    Tentang Saya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative" data-aos="fade-right">
+                <div class="aspect-square rounded-3xl overflow-hidden glass-card p-2">
+                    <div class="w-full h-full bg-gradient-to-br from-indigo-900 to-black rounded-2xl flex items-center justify-center">
+                        <!-- Placeholder for Photo -->
+                        <i data-lucide="user" class="w-32 h-32 text-primary/30"></i>
+                    </div>
+                </div>
+                <!-- Stats Badge -->
+                <div class="absolute -bottom-6 -right-6 glass-card p-6 rounded-2xl">
+                    <div class="text-3xl font-bold text-primary">S1</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Teknik Komputer ITS</div>
+                </div>
+            </div>
+            
+            <div data-aos="fade-left">
+                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-2">Profil Profesional</h2>
+                <h3 class="text-4xl font-heading font-bold mb-6">Dedikasi untuk <span class="text-gradient">Solusi Terukur.</span></h3>
+                <div class="space-y-4 text-gray-400 leading-relaxed">
+                    <p>
+                        Lahir di Sampang pada Februari 1998, perjalanan saya di dunia teknologi dimulai di Institut Teknologi Sepuluh Nopember (ITS). Sejak lulus tahun 2021, saya telah mendedikasikan diri untuk membangun sistem yang tidak hanya berfungsi, tapi juga memecahkan masalah nyata.
+                    </p>
+                    <p>
+                        Keahlian utama saya terletak pada perancangan arsitektur aplikasi yang scalable, efisien, dan ramah pengguna. Saya percaya bahwa teknologi terbaik adalah yang mampu mempermudah urusan banyak orang.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-6 mt-8">
+                    <div class="p-4 glass-card rounded-xl">
+                        <div class="text-white font-bold mb-1">Lokasi</div>
+                        <div class="text-sm text-gray-400">Sampang, Jawa Timur</div>
+                    </div>
+                    <div class="p-4 glass-card rounded-xl">
+                        <div class="text-white font-bold mb-1">Pengalaman</div>
+                        <div class="text-sm text-gray-400">4+ Tahun di IT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24 px-6 bg-white/5">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-2">Capabilities</h2>
+            <h3 class="text-4xl font-heading font-bold">Teknologi <span class="text-gradient">& Alat.</span></h3>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <!-- Tech Cards -->
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="100">
+                <i data-lucide="code-2" class="text-blue-400"></i>
+                <span class="text-sm font-medium">PHP/Laravel</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="200">
+                <i data-lucide="layout" class="text-cyan-400"></i>
+                <span class="text-sm font-medium">React / Vue</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="300">
+                <i data-lucide="database" class="text-green-400"></i>
+                <span class="text-sm font-medium">MySQL / PgSQL</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="400">
+                <i data-lucide="server" class="text-orange-400"></i>
+                <span class="text-sm font-medium">Node.js</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="500">
+                <i data-lucide="container" class="text-indigo-400"></i>
+                <span class="text-sm font-medium">Docker</span>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 text-center" data-aos="zoom-in" data-aos-delay="600">
+                <i data-lucide="git-branch" class="text-red-400"></i>
+                <span class="text-sm font-medium">Git Workflow</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-2">Karya Unggulan</h2>
+                <h3 class="text-4xl font-heading font-bold">Project <span class="text-gradient">Terpilih.</span></h3>
+            </div>
+            <p class="text-gray-400 max-w-sm">
+                Fokus pada integrasi sistem pemerintahan daerah untuk pelayanan publik yang lebih transparan.
+            </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <!-- Project 1 -->
+            <div class="glass-card rounded-3xl overflow-hidden group" data-aos="fade-up">
+                <div class="h-64 bg-gradient-to-tr from-primary/20 to-black flex items-center justify-center relative overflow-hidden">
+                    <i data-lucide="landmark" class="w-20 h-20 text-white/10 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="px-4 py-2 bg-white text-black rounded-full text-sm font-bold">Lihat Detail</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex gap-2 mb-4">
+                        <span class="text-[10px] px-2 py-1 rounded bg-white/10 border border-white/10">Government</span>
+                        <span class="text-[10px] px-2 py-1 rounded bg-white/10 border border-white/10">Enterprise</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3">Sistem Terpadu Pemerintah Daerah</h4>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Aplikasi yang dirancang khusus untuk Kabupaten Sampang guna mengotomatisasi birokrasi dan administrasi daerah agar lebih efisien.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs font-semibold">
+                        <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> 2024</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3 h-3 text-green-400"></i> Live Production</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="glass-card rounded-3xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-64 bg-gradient-to-tr from-purple-900/20 to-black flex items-center justify-center relative overflow-hidden">
+                    <i data-lucide="activity" class="w-20 h-20 text-white/10 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="absolute inset-0 bg-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="px-4 py-2 bg-white text-black rounded-full text-sm font-bold">Lihat Detail</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex gap-2 mb-4">
+                        <span class="text-[10px] px-2 py-1 rounded bg-white/10 border border-white/10">Monitoring</span>
+                        <span class="text-[10px] px-2 py-1 rounded bg-white/10 border border-white/10">Data Visualization</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3">Dashboard Analitik Sampang</h4>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Visualisasi data real-time untuk pemantauan program kerja pemerintah kabupaten dengan sistem peringatan dini.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs font-semibold">
+                        <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> 2023</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3 h-3 text-green-400"></i> Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 px-6 bg-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-2 text-center">Rekam Jejak</h2>
+            <h3 class="text-4xl font-heading font-bold mb-16 text-center">Perjalanan <span class="text-gradient">Karir.</span></h3>
+            
+            <div class="space-y-12">
+                <!-- Exp 1 -->
+                <div class="relative pl-12 border-l border-white/10" data-aos="fade-left">
+                    <div class="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-dark-bg"></div>
+                    <div class="text-primary font-bold mb-2">2021 - Sekarang</div>
+                    <h4 class="text-xl font-bold mb-1">IT Programmer</h4>
+                    <p class="text-sm text-gray-400 mb-4 font-medium italic">Profesional IT</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Fokus pada pengembangan aplikasi web berbasis framework modern, integrasi API, dan optimasi database untuk kebutuhan sektor publik dan privat.
+                    </p>
+                </div>
+
+                <!-- Exp 2 -->
+                <div class="relative pl-12 border-l border-white/10" data-aos="fade-left" data-aos-delay="100">
+                    <div class="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-indigo-400/50 border-4 border-dark-bg"></div>
+                    <div class="text-gray-400 font-bold mb-2">2017 - 2021</div>
+                    <h4 class="text-xl font-bold mb-1">Mahasiswa S1 Teknik Komputer</h4>
+                    <p class="text-sm text-gray-400 mb-4 font-medium italic">Institut Teknologi Sepuluh Nopember (ITS)</p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Mempelajari dasar sistem komputer, jaringan, keamanan siber, dan pemrograman tingkat lanjut. Aktif dalam riset pengembangan sistem cerdas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto glass-card rounded-[3rem] p-12 md:p-20 overflow-hidden relative">
+            <div class="blob top-[-50%] right-[-50%] opacity-20"></div>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8 leading-tight">
+                        Mari Berdiskusi Tentang <span class="text-gradient">Project Anda.</span>
+                    </h2>
+                    <p class="text-gray-400 mb-10">
+                        Saya terbuka untuk peluang kolaborasi, konsultasi IT, atau sekadar bertukar pikiran mengenai teknologi terbaru.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400 uppercase font-bold tracking-widest">Email</div>
+                                <div class="font-medium">ismail.dev@example.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400 uppercase font-bold tracking-widest">LinkedIn</div>
+                                <div class="font-medium">linkedin.com/in/ismail-dev</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase text-gray-400">Nama</label>
+                            <input type="text" placeholder="Ismail" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase text-gray-400">Email</label>
+                            <input type="email" placeholder="example@mail.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase text-gray-400">Pesan</label>
+                        <textarea rows="4" placeholder="Apa yang bisa saya bantu?" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"></textarea>
+                    </div>
+                    <button class="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-indigo-600 transition-all shadow-lg shadow-primary/20">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xl font-heading font-bold text-gradient">ISMAIL.</div>
+            <div class="text-sm text-gray-500 italic">
+                &copy; 2026 Ismail. Didesain dengan semangat dari Sampang untuk Dunia.
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-quad',
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Interaction
+        const menuBtn = document.getElementById('menuBtn');
+        // Simple toggle logic can be added here if needed for mobile
+
+        // Smooth Scroll handling (Native browser behavior + JS for extra control)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
