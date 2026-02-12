@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ismail | IT Programmer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            glass: 'rgba(30, 41, 59, 0.7)',
+                            accent: '#6366f1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020617;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-glass px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                ISMAIL.
+            </div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-indigo-400 transition">Beranda</a>
+                <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                <a href="#tech" class="hover:text-indigo-400 transition">Tech Stack</a>
+                <a href="#project" class="hover:text-indigo-400 transition">Project</a>
+                <a href="#experience" class="hover:text-indigo-400 transition">Pengalaman</a>
+                <a href="#contact" class="px-4 py-2 bg-indigo-600 rounded-full hover:bg-indigo-700 transition">Kontak</a>
+            </div>
+            <!-- Mobile Menu Toggle (Simplified) -->
+            <div class="md:hidden">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-indigo-400 font-semibold tracking-widest mb-4">HELLO WORLD, I AM</h2>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    ISMAIL <br>
+                    <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">IT Programmer</span>
+                </h1>
+                <p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
+                    Lulusan S1 Teknik Komputer ITS (2021). Berfokus pada pengembangan solusi perangkat lunak yang skalabel dan efisien.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#project" class="px-8 py-3 bg-indigo-600 rounded-xl font-semibold hover:bg-indigo-700 transition flex items-center gap-2">
+                        Lihat Project <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-3 glass-card rounded-xl font-semibold hover:bg-slate-800 transition">
+                        Hire Me
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center" data-aos="zoom-in">
+                <div class="absolute inset-0 bg-indigo-500/20 blur-[100px] rounded-full"></div>
+                <div class="w-72 h-72 md:w-96 md:h-96 glass-card overflow-hidden relative border-2 border-indigo-500/30">
+                    <!-- Placeholder Profile Image -->
+                    <div class="w-full h-full flex items-center justify-center bg-slate-900">
+                        <!-- <i class="fa-solid fa-user-tie text-8xl text-indigo-500/50"></i> -->
+                      <img src="assets/img/IMG_2337.JPEG" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-slate-950/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/3" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold mb-6 italic">"Coding is not just about syntax, it's about solving real problems."</h3>
+                    <div class="h-1 w-20 bg-indigo-500"></div>
+                </div>
+                <div class="md:w-2/3 grid gap-6 text-slate-400 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    <p>
+                        Lahir di Sampang pada 1 Februari 1998, saya mengawali perjalanan akademik saya di Institut Teknologi Sepuluh Nopember (ITS) Surabaya. Lulus pada tahun 2021 dari jurusan Teknik Komputer membekali saya dengan fundamental kuat dalam rekayasa perangkat lunak dan sistem komputer.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="glass-card p-4">
+                            <span class="block text-indigo-400 font-bold text-xl">5+</span>
+                            <span class="text-sm">Projects Completed</span>
+                        </div>
+                        <div class="glass-card p-4">
+                            <span class="block text-indigo-400 font-bold text-xl">ITS</span>
+                            <span class="text-sm">Computer Engineering Alumni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4" data-aos="fade-up">Tech Stack</h2>
+            <p class="text-slate-400" data-aos="fade-up" data-aos-delay="100">Teknologi yang saya gunakan untuk membangun masa depan</p>
+        </div>
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" data-aos="fade-up">
+            <!-- Items -->
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-brands fa-php text-4xl text-indigo-400 group-hover:scale-110 transition"></i>
+                <span class="font-medium">PHP</span>
+            </div>
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-brands fa-laravel text-4xl text-red-500 group-hover:scale-110 transition"></i>
+                <span class="font-medium">Laravel</span>
+            </div>
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-brands fa-js text-4xl text-yellow-400 group-hover:scale-110 transition"></i>
+                <span class="font-medium">JavaScript</span>
+            </div>
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-brands fa-react text-4xl text-cyan-400 group-hover:scale-110 transition"></i>
+                <span class="font-medium">React</span>
+            </div>
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-solid fa-database text-4xl text-slate-400 group-hover:scale-110 transition"></i>
+                <span class="font-medium">MySQL</span>
+            </div>
+            <div class="glass-card p-6 flex flex-col items-center gap-4 group">
+                <i class="fa-brands fa-docker text-4xl text-blue-500 group-hover:scale-110 transition"></i>
+                <span class="font-medium">Docker</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="project" class="py-24 px-6 bg-slate-950/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+                    <p class="text-slate-400">Implementasi solusi digital untuk masyarakat</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card overflow-hidden group" data-aos="fade-up">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span class="px-3 py-1 bg-indigo-600 rounded-full text-xs font-bold mb-2 inline-block">GOVERNMENT APP</span>
+                            <h3 class="text-2xl font-bold">Aplikasi Pemda Kabupaten Sampang</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-slate-400 mb-6">
+                            Pengembangan sistem manajemen data terintegrasi untuk Pemerintah Daerah Kabupaten Sampang guna meningkatkan efisiensi pelayanan publik.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">Laravel</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">Bootstrap</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Mockup) -->
+                <div class="glass-card overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span class="px-3 py-1 bg-cyan-600 rounded-full text-xs font-bold mb-2 inline-block">WEB SYSTEM</span>
+                            <h3 class="text-2xl font-bold">E-Procurement System</h3>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-slate-400 mb-6">
+                            Sistem pengadaan barang dan jasa berbasis web dengan fitur tracking real-time dan enkripsi data tingkat tinggi.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">React.js</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">Tailwind CSS</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Pengalaman Profesional</h2>
+            
+            <div class="space-y-8">
+                <!-- Timeline Item 1 -->
+                <div class="flex gap-6 md:gap-12" data-aos="fade-left">
+                    <div class="hidden md:block w-32 text-right pt-2 text-slate-500 font-semibold italic">
+                        2021 - Skrg
+                    </div>
+                    <div class="relative pb-12">
+                        <div class="absolute top-2 left-[-11px] md:left-[-41px] w-5 h-5 bg-indigo-500 rounded-full border-4 border-slate-900 z-10"></div>
+                        <div class="absolute top-2 left-[-2px] md:left-[-32px] w-[2px] h-full bg-slate-800"></div>
+                        <div class="glass-card p-6 ml-4">
+                            <h4 class="text-xl font-bold text-indigo-400">IT Programmer</h4>
+                            <p class="text-sm text-slate-500 mb-4">Profesional</p>
+                            <p class="text-slate-400">Bertanggung jawab dalam merancang, mengembangkan, dan memelihara aplikasi web skala enterprise. Fokus pada optimasi kode dan integrasi database.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="flex gap-6 md:gap-12" data-aos="fade-left" data-aos-delay="200">
+                    <div class="hidden md:block w-32 text-right pt-2 text-slate-500 font-semibold italic">
+                        2017 - 2021
+                    </div>
+                    <div class="relative pb-12">
+                        <div class="absolute top-2 left-[-11px] md:left-[-41px] w-5 h-5 bg-slate-600 rounded-full border-4 border-slate-900 z-10"></div>
+                        <div class="absolute top-2 left-[-2px] md:left-[-32px] w-[2px] h-full bg-slate-800"></div>
+                        <div class="glass-card p-6 ml-4">
+                            <h4 class="text-xl font-bold text-slate-300">S1 Teknik Komputer</h4>
+                            <p class="text-sm text-slate-500 mb-4">Institut Teknologi Sepuluh Nopember (ITS)</p>
+                            <p class="text-slate-400">Mempelajari arsitektur komputer, jaringan, keamanan siber, dan pemrograman tingkat lanjut. Lulus dengan bekal kompetensi yang relevan dengan industri IT modern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
+                <p class="text-slate-400 mb-10 text-lg">
+                    Tertarik untuk bekerja sama atau sekadar berdiskusi mengenai teknologi? Saya terbuka untuk peluang kolaborasi baru.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 glass-card flex items-center justify-center text-indigo-400 text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Email Me</p>
+                            <p class="font-semibold text-lg">ismail@example.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 glass-card flex items-center justify-center text-indigo-400 text-xl">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Location</p>
+                            <p class="font-semibold text-lg">Sampang, Jawa Timur, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-8" data-aos="fade-left">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">Nama Lengkap</label>
+                        <input type="text" class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">Alamat Email</label>
+                        <input type="email" class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition" placeholder="email@contoh.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">Pesan</label>
+                        <textarea rows="4" class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition" placeholder="Tuliskan pesan Anda di sini..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800 text-center text-slate-500">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-2xl font-bold mb-6 text-slate-300">ISMAIL.</div>
+            <div class="flex justify-center gap-6 mb-8 text-xl">
+                <a href="#" class="hover:text-indigo-400 transition"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-indigo-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-indigo-400 transition"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2026 Ismail Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS Library Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Simple Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'shadow-2xl');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2', 'shadow-2xl');
+            }
+        });
+    </script>
+</body>
+</html>
