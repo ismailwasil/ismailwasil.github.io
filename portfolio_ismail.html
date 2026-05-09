@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ismail — IT Programmer</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080c14;
+  --bg2:#0d1220;
+  --surface:rgba(255,255,255,0.04);
+  --surface-hover:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);
+  --accent:#4f8ef7;
+  --accent2:#7b5ea7;
+  --accent3:#38c9a0;
+  --text:#e8eaf0;
+  --muted:#8892a4;
+  --glass:rgba(13,18,32,0.7);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6;}
+
+/* NOISE OVERLAY */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+
+/* AURORA BG */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.aurora span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;animation:drift 18s ease-in-out infinite alternate;}
+.aurora span:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,#4f8ef7,transparent);top:-100px;left:-100px;animation-duration:20s;}
+.aurora span:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,#7b5ea7,transparent);bottom:-50px;right:-50px;animation-duration:25s;animation-delay:-8s;}
+.aurora span:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,#38c9a0,transparent);top:40%;left:50%;animation-duration:22s;animation-delay:-4s;}
+@keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(60px,40px) scale(1.15);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(8,12,20,0.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:50px;transition:all .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--surface-hover);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(8,12,20,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 5%;z-index:99;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;color:var(--muted);text-decoration:none;padding:12px 0;font-size:1rem;border-bottom:1px solid var(--border);}
+.mobile-menu a:hover{color:var(--text);}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:100px 5%;}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:14px;line-height:1.2;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;margin-bottom:50px;}
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--accent3);background:rgba(56,201,160,.08);border:1px solid rgba(56,201,160,.2);padding:6px 14px;border-radius:50px;margin-bottom:20px;}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--accent3);border-radius:50%;box-shadow:0 0 8px var(--accent3);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:8px;}
+.hero-role{font-size:clamp(1rem,2vw,1.3rem);color:var(--muted);margin-bottom:24px;}
+.hero-desc{color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:12px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 30px rgba(79,142,247,.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,142,247,.45);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+.btn-outline:hover{background:var(--surface-hover);border-color:var(--accent);}
+.hero-visual{display:flex;justify-content:center;}
+.avatar-wrap{position:relative;width:300px;height:300px;}
+.avatar-ring{position:absolute;inset:-16px;border-radius:50%;border:1px solid transparent;background:linear-gradient(#080c14,#080c14) padding-box,linear-gradient(135deg,var(--accent),var(--accent3)) border-box;animation:spin 12s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.avatar-inner{position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:6rem;overflow:hidden;}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;}
+.avatar-badge{position:absolute;bottom:10px;right:10px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:8px 14px;font-size:.78rem;font-weight:600;color:var(--accent3);}
+.hero-stats{display:flex;gap:24px;margin-top:36px;}
+.stat{text-align:center;}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);}
+.stat-label{font-size:.75rem;color:var(--muted);}
+
+/* GLASS CARD */
+.glass{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:20px;}
+
+/* ABOUT */
+#about .inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;max-width:1100px;margin:auto;}
+.about-card{padding:32px;}
+.info-row{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.info-label{font-size:.75rem;color:var(--muted);margin-bottom:2px;}
+.info-val{font-size:.9rem;font-weight:500;}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:16px;font-size:.95rem;}
+
+/* TECH STACK */
+#tech{background:var(--bg2);}
+#tech .inner{max-width:1100px;margin:auto;}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;}
+.tech-card{padding:22px 14px;border-radius:16px;text-align:center;transition:all .3s;cursor:default;}
+.tech-card:hover{background:var(--surface-hover);border-color:var(--accent);transform:translateY(-4px);}
+.tech-icon{font-size:2rem;margin-bottom:10px;}
+.tech-name{font-size:.82rem;font-weight:600;color:var(--text);}
+.tech-level{font-size:.72rem;color:var(--muted);margin-top:4px;}
+.tech-cat{margin-bottom:32px;}
+.tech-cat-label{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+
+/* PROJECTS */
+#projects .inner{max-width:1100px;margin:auto;}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.project-card{padding:28px;border-radius:20px;transition:all .35s;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,142,247,.06),rgba(56,201,160,.04));opacity:0;transition:.3s;}
+.project-card:hover{transform:translateY(-6px);border-color:rgba(79,142,247,.3);}
+.project-card:hover::before{opacity:1;}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.proj-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.proj-links{display:flex;gap:8px;}
+.proj-links a{color:var(--muted);font-size:.85rem;padding:4px 8px;border-radius:8px;transition:.2s;text-decoration:none;}
+.proj-links a:hover{color:var(--text);background:var(--surface);}
+.proj-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+.proj-desc{color:var(--muted);font-size:.87rem;line-height:1.7;margin-bottom:16px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:50px;background:rgba(79,142,247,.1);color:var(--accent);border:1px solid rgba(79,142,247,.15);}
+.tag.green{background:rgba(56,201,160,.1);color:var(--accent3);border-color:rgba(56,201,160,.2);}
+.tag.purple{background:rgba(123,94,167,.12);color:#b08af5;border-color:rgba(123,94,167,.25);}
+.badge-gov{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:#f5a623;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);padding:3px 10px;border-radius:50px;margin-bottom:12px;}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2);}
+#experience .inner{max-width:900px;margin:auto;}
+.timeline{position:relative;padding-left:30px;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent3));}
+.tl-item{position:relative;margin-bottom:36px;}
+.tl-dot{position:absolute;left:-38px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 12px var(--accent);}
+.tl-card{padding:24px 28px;border-radius:16px;transition:.3s;}
+.tl-card:hover{border-color:rgba(79,142,247,.3);transform:translateX(4px);}
+.tl-period{font-size:.75rem;font-weight:600;color:var(--accent3);letter-spacing:.08em;margin-bottom:6px;}
+.tl-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;}
+.tl-company{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.tl-desc{color:var(--muted);font-size:.87rem;line-height:1.7;}
+
+/* CONTACT */
+#contact .inner{max-width:800px;margin:auto;text-align:center;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:40px;}
+.contact-card{padding:26px 20px;border-radius:16px;text-decoration:none;color:var(--text);transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.contact-card:hover{transform:translateY(-5px);border-color:var(--accent);background:var(--surface-hover);}
+.contact-card i{font-size:1.6rem;}
+.contact-card span{font-size:.85rem;font-weight:500;}
+.contact-card small{font-size:.75rem;color:var(--muted);}
+.contact-cta{margin-top:50px;padding:40px;border-radius:24px;background:linear-gradient(135deg,rgba(79,142,247,.08),rgba(56,201,160,.06));border:1px solid rgba(79,142,247,.15);}
+.contact-cta h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:10px;}
+.contact-cta p{color:var(--muted);margin-bottom:24px;font-size:.95rem;}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 5%;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem;position:relative;z-index:1;}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* SCROLL BAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;}
+  .hero-visual{order:-1;}
+  .hero-btns,.hero-stats{justify-content:center;}
+  .hero-desc{margin:0 auto 36px;}
+  #about .inner{grid-template-columns:1fr;}
+  .avatar-wrap{width:220px;height:220px;}
+  .avatar-inner{font-size:4rem;}
+}
+@media(max-width:600px){
+  section{padding:80px 5%;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .project-grid{grid-template-columns:1fr;}
+  .tech-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-stats{gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">IS/</div>
+  <ul class="nav-links">
+    <li><a href="#hero" class="active">Beranda</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#tech">Tech Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+  <div class="hamburger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMenu()">Beranda</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#tech" onclick="closeMenu()">Tech Stack</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#experience" onclick="closeMenu()">Pengalaman</a>
+  <a href="#contact" onclick="closeMenu()">Kontak</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Available for Projects</div>
+      <h1 class="hero-name">Hi, I'm <span class="gradient-text">Ismail</span></h1>
+      <p class="hero-role">IT Programmer · Software Developer</p>
+      <p class="hero-desc">Membangun solusi digital yang efisien dan berdampak — dari aplikasi pemerintah daerah hingga sistem enterprise. Lulusan Teknik Komputer ITS, berpengalaman sejak 2021.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Lihat Projects</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Hubungi Saya</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num gradient-text">4+</div>
+          <div class="stat-label">Tahun Exp</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num gradient-text">10+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num gradient-text">S1</div>
+          <div class="stat-label">Teknik Komputer</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal-right">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-inner">🧑‍💻</div>
+        <div class="avatar-badge">✨ ITS Graduate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="reveal-left">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Kenali Saya <span class="gradient-text">Lebih Dekat</span></h2>
+      <div class="about-text">
+        <p>Saya <strong>Ismail</strong>, seorang IT Programmer yang lahir dan besar di Sampang, Madura. Saya menyelesaikan pendidikan S1 Teknik Komputer di <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong> Surabaya pada tahun 2021.</p>
+        <p>Dengan pengalaman lebih dari 4 tahun di industri, saya berfokus pada pengembangan aplikasi yang berdampak nyata bagi masyarakat — termasuk sistem aplikasi untuk pemerintah daerah Kabupaten Sampang.</p>
+        <p>Saya menyukai tantangan teknis, menulis kode yang clean & maintainable, serta terus belajar teknologi terbaru untuk menghasilkan produk terbaik.</p>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="glass about-card">
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-user"></i></div>
+          <div><div class="info-label">Nama Lengkap</div><div class="info-val">Ismail</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="info-label">Tempat, Tanggal Lahir</div><div class="info-val">Sampang, 1 Februari 1998</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(123,94,167,.14);color:#b08af5"><i class="fas fa-graduation-cap"></i></div>
+          <div><div class="info-label">Pendidikan</div><div class="info-val">S1 Teknik Komputer — ITS (2021)</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-briefcase"></i></div>
+          <div><div class="info-label">Pekerjaan</div><div class="info-val">IT Programmer</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-city"></i></div>
+          <div><div class="info-label">Domisili</div><div class="info-val">Jawa Timur, Indonesia</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(245,166,35,.12);color:#f5a623"><i class="fas fa-star"></i></div>
+          <div><div class="info-label">Fokus</div><div class="info-val">Web & App Development</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Tech Stack</div>
+      <h2 class="section-title">Tools & <span class="gradient-text">Teknologi</span></h2>
+      <p class="section-sub" style="margin:0 auto 50px;">Teknologi yang saya kuasai dan gunakan dalam pengembangan sehari-hari.</p>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Frontend</div>
+      <div class="tech-grid">
+        <div class="glass tech-card"><div class="tech-icon">⚡</div><div class="tech-name">HTML5</div><div class="tech-level">Expert</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🎨</div><div class="tech-name">CSS3</div><div class="tech-level">Expert</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🟨</div><div class="tech-name">JavaScript</div><div class="tech-level">Advanced</div></div>
+        <div class="glass tech-card"><div class="tech-icon">⚛️</div><div class="tech-name">React.js</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">💠</div><div class="tech-name">Bootstrap</div><div class="tech-level">Expert</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🌊</div><div class="tech-name">Tailwind</div><div class="tech-level">Advanced</div></div>
+      </div>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Backend</div>
+      <div class="tech-grid">
+        <div class="glass tech-card"><div class="tech-icon">🐘</div><div class="tech-name">PHP</div><div class="tech-level">Expert</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🟢</div><div class="tech-name">Node.js</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🔷</div><div class="tech-name">Laravel</div><div class="tech-level">Advanced</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🐍</div><div class="tech-name">Python</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🛢️</div><div class="tech-name">MySQL</div><div class="tech-level">Advanced</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🍃</div><div class="tech-name">MongoDB</div><div class="tech-level">Intermediate</div></div>
+      </div>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Tools & DevOps</div>
+      <div class="tech-grid">
+        <div class="glass tech-card"><div class="tech-icon">🐙</div><div class="tech-name">Git</div><div class="tech-level">Advanced</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">☁️</div><div class="tech-name">VPS/Cloud</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🔥</div><div class="tech-name">Firebase</div><div class="tech-level">Intermediate</div></div>
+        <div class="glass tech-card"><div class="tech-icon">📱</div><div class="tech-name">REST API</div><div class="tech-level">Advanced</div></div>
+        <div class="glass tech-card"><div class="tech-icon">🧪</div><div class="tech-name">Postman</div><div class="tech-level">Advanced</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Projects <span class="gradient-text">Unggulan</span></h2>
+      <p class="section-sub">Beberapa karya yang pernah saya bangun, dari sistem pemerintah hingga aplikasi enterprise.</p>
+    </div>
+    <div class="project-grid">
+      <div class="glass project-card reveal">
+        <div class="badge-gov"><i class="fas fa-landmark"></i> Pemerintah Daerah</div>
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-building-columns"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Informasi Layanan Publik</div>
+        <div class="proj-desc">Aplikasi layanan publik terintegrasi untuk Pemerintah Kabupaten Sampang — memudahkan warga dalam mengakses layanan administrasi secara digital.</div>
+        <div class="proj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag green">Bootstrap</span><span class="tag purple">REST API</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.1s">
+        <div class="badge-gov"><i class="fas fa-landmark"></i> Pemerintah Daerah</div>
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-chart-bar"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Dashboard Monitoring Daerah</div>
+        <div class="proj-desc">Dashboard analitik real-time untuk monitoring data dan pelaporan kinerja OPD di lingkungan Pemkab Sampang dengan visualisasi data interaktif.</div>
+        <div class="proj-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag green">Chart.js</span><span class="tag purple">MongoDB</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.2s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(123,94,167,.14);color:#b08af5"><i class="fas fa-users"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Manajemen SDM</div>
+        <div class="proj-desc">Aplikasi manajemen sumber daya manusia (HRD) dengan fitur absensi, penggajian, dan manajemen cuti berbasis web yang responsif.</div>
+        <div class="proj-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag green">MySQL</span><span class="tag purple">Tailwind</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.1s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(245,166,35,.12);color:#f5a623"><i class="fas fa-store"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Platform E-Commerce</div>
+        <div class="proj-desc">Platform belanja online dengan fitur manajemen produk, cart, payment gateway, dan dashboard admin yang lengkap untuk UMKM lokal.</div>
+        <div class="proj-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag green">PostgreSQL</span><span class="tag purple">Midtrans</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.2s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-mobile-alt"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Aplikasi Mobile Warga</div>
+        <div class="proj-desc">Aplikasi mobile berbasis PWA untuk pengaduan dan pelaporan warga dengan sistem notifikasi real-time dan tracking status laporan.</div>
+        <div class="proj-tags"><span class="tag">PWA</span><span class="tag">JavaScript</span><span class="tag green">Firebase</span><span class="tag purple">FCM</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.3s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-database"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Arsip Digital</div>
+        <div class="proj-desc">Aplikasi pengelolaan arsip dokumen digital dengan fitur OCR, pencarian cerdas, dan sistem versioning dokumen untuk instansi pemerintah.</div>
+        <div class="proj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag green">OCR</span><span class="tag purple">Elasticsearch</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Pengalaman <span class="gradient-text">Profesional</span></h2>
+      <p class="section-sub" style="margin:0 auto 50px;">Perjalanan karier dan pencapaian profesional saya.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">2021 — Sekarang</div>
+          <div class="tl-title">IT Programmer</div>
+          <div class="tl-company"><i class="fas fa-building" style="color:var(--accent);margin-right:6px;"></i>Perusahaan / Instansi — Jawa Timur</div>
+          <div class="tl-desc">Bertanggung jawab atas pengembangan dan pemeliharaan aplikasi berbasis web. Memimpin implementasi sistem untuk kebutuhan pemerintah daerah, termasuk perencanaan arsitektur, pengembangan backend & frontend, hingga deployment dan maintenance.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent3);box-shadow:0 0 12px var(--accent3);"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">2021</div>
+          <div class="tl-title">Lulus S1 Teknik Komputer</div>
+          <div class="tl-company"><i class="fas fa-university" style="color:var(--accent3);margin-right:6px;"></i>Institut Teknologi Sepuluh Nopember (ITS) — Surabaya</div>
+          <div class="tl-desc">Menyelesaikan studi S1 Teknik Komputer dengan fokus pada pengembangan perangkat lunak, jaringan komputer, dan sistem embedded. Aktif dalam organisasi dan proyek penelitian kampus.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#b08af5;box-shadow:0 0 12px #b08af5;"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">Project Milestone</div>
+          <div class="tl-title">Pengembang Aplikasi Pemkab Sampang</div>
+          <div class="tl-company"><i class="fas fa-landmark" style="color:#f5a623;margin-right:6px;"></i>Pemerintah Kabupaten Sampang — Madura</div>
+          <div class="tl-desc">Berkontribusi dalam membangun ekosistem digital untuk pemerintah daerah Kabupaten Sampang. Menghasilkan beberapa aplikasi yang aktif digunakan oleh instansi dan masyarakat setempat.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#f5a623;box-shadow:0 0 12px #f5a623;"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">1998 — 2021</div>
+          <div class="tl-title">Perjalanan Pendidikan</div>
+          <div class="tl-company"><i class="fas fa-graduation-cap" style="color:#f5a623;margin-right:6px;"></i>Sampang → Surabaya</div>
+          <div class="tl-desc">Lahir di Sampang, 1 Februari 1998. Menempuh pendidikan dasar di Sampang kemudian melanjutkan ke jenjang S1 di ITS Surabaya — salah satu kampus teknik terbaik di Indonesia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Mari <span class="gradient-text">Berkolaborasi</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Punya proyek menarik atau ingin berdiskusi? Jangan ragu untuk menghubungi saya!</p>
+    </div>
+    <div class="contact-grid reveal">
+      <a href="mailto:ismail@email.com" class="glass contact-card">
+        <i class="fas fa-envelope" style="color:var(--accent)"></i>
+        <span>Email</span>
+        <small>ismail@email.com</small>
+      </a>
+      <a href="https://linkedin.com/in/ismail" target="_blank" class="glass contact-card">
+        <i class="fab fa-linkedin" style="color:#0A66C2"></i>
+        <span>LinkedIn</span>
+        <small>linkedin.com/in/ismail</small>
+      </a>
+      <a href="https://github.com/ismail" target="_blank" class="glass contact-card">
+        <i class="fab fa-github" style="color:var(--text)"></i>
+        <span>GitHub</span>
+        <small>github.com/ismail</small>
+      </a>
+      <a href="https://wa.me/628xxxxxxxxx" target="_blank" class="glass contact-card">
+        <i class="fab fa-whatsapp" style="color:#25D366"></i>
+        <span>WhatsApp</span>
+        <small>+62 8xx xxxx xxxx</small>
+      </a>
+    </div>
+    <div class="contact-cta reveal">
+      <h3>Siap Membangun Sesuatu yang <span class="gradient-text">Luar Biasa?</span></h3>
+      <p>Saya terbuka untuk peluang freelance, kolaborasi proyek, atau diskusi seputar teknologi.</p>
+      <a href="mailto:ismail@email.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Kirim Pesan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted with ❤️ by <strong style="color:var(--accent)">Ismail</strong> · IT Programmer · ITS Graduate 2021</p>
+  <p style="margin-top:6px;font-size:.75rem;">© 2025–2026 All rights reserved.</p>
+</footer>
+
+<script>
+// REVEAL ON SCROLL
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+// ACTIVE NAV
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-120) cur=s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+  });
+});
+
+// MOBILE MENU
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+</script>
+</body>
+</html>
