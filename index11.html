@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ismail — IT Programmer</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.19.0/simple-icons.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080c14;
+  --bg2:#0d1220;
+  --surface:rgba(255,255,255,0.04);
+  --surface-hover:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);
+  --accent:#4f8ef7;
+  --accent2:#7b5ea7;
+  --accent3:#38c9a0;
+  --text:#e8eaf0;
+  --muted:#8892a4;
+  --glass:rgba(13,18,32,0.7);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6;}
+
+/* NOISE OVERLAY */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+
+/* AURORA BG */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.aurora span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;animation:drift 18s ease-in-out infinite alternate;}
+.aurora span:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,#4f8ef7,transparent);top:-100px;left:-100px;animation-duration:20s;}
+.aurora span:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,#7b5ea7,transparent);bottom:-50px;right:-50px;animation-duration:25s;animation-delay:-8s;}
+.aurora span:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,#38c9a0,transparent);top:40%;left:50%;animation-duration:22s;animation-delay:-4s;}
+@keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(60px,40px) scale(1.15);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(8,12,20,0.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:50px;transition:all .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--surface-hover);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(8,12,20,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 5%;z-index:99;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;color:var(--muted);text-decoration:none;padding:12px 0;font-size:1rem;border-bottom:1px solid var(--border);}
+.mobile-menu a:hover{color:var(--text);}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:100px 5%;}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:14px;line-height:1.2;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;margin-bottom:50px;}
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--accent3);background:rgba(56,201,160,.08);border:1px solid rgba(56,201,160,.2);padding:6px 14px;border-radius:50px;margin-bottom:20px;}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--accent3);border-radius:50%;box-shadow:0 0 8px var(--accent3);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:8px;}
+.hero-role{font-size:clamp(1rem,2vw,1.3rem);color:var(--muted);margin-bottom:24px;}
+.hero-desc{color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:12px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 30px rgba(79,142,247,.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,142,247,.45);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+.btn-outline:hover{background:var(--surface-hover);border-color:var(--accent);}
+.hero-visual{display:flex;justify-content:center;}
+.avatar-wrap{position:relative;width:300px;height:300px;}
+.avatar-ring{position:absolute;inset:-16px;border-radius:50%;border:1px solid transparent;background:linear-gradient(#080c14,#080c14) padding-box,linear-gradient(135deg,var(--accent),var(--accent3)) border-box;animation:spin 12s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.avatar-inner{position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:6rem;overflow:hidden;}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;}
+.avatar-badge{position:absolute;bottom:10px;right:10px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:8px 14px;font-size:.78rem;font-weight:600;color:var(--accent3);}
+.hero-stats{display:flex;gap:24px;margin-top:36px;}
+.stat{text-align:center;}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);}
+.stat-label{font-size:.75rem;color:var(--muted);}
+
+/* GLASS CARD */
+.glass{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:20px;}
+
+/* ABOUT */
+#about .inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;max-width:1100px;margin:auto;}
+.about-card{padding:32px;}
+.info-row{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.info-label{font-size:.75rem;color:var(--muted);margin-bottom:2px;}
+.info-val{font-size:.9rem;font-weight:500;}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:16px;font-size:.95rem;}
+
+/* TECH STACK */
+#tech{background:var(--bg2);}
+#tech .inner{max-width:1100px;margin:auto;}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;}
+.tech-card{padding:22px 14px;border-radius:16px;text-align:center;transition:all .3s;cursor:default;}
+.tech-card:hover{background:var(--surface-hover);border-color:var(--accent);transform:translateY(-4px);}
+.tech-icon{font-size:2rem;margin-bottom:10px;}
+.tech-name{font-size:.82rem;font-weight:600;color:var(--text);}
+.tech-level{font-size:.72rem;color:var(--muted);margin-top:4px;}
+.tech-cat{margin-bottom:32px;}
+.tech-cat-label{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+
+/* PROJECTS */
+#projects .inner{max-width:1100px;margin:auto;}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.project-card{padding:28px;border-radius:20px;transition:all .35s;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,142,247,.06),rgba(56,201,160,.04));opacity:0;transition:.3s;}
+.project-card:hover{transform:translateY(-6px);border-color:rgba(79,142,247,.3);}
+.project-card:hover::before{opacity:1;}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.proj-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.proj-links{display:flex;gap:8px;}
+.proj-links a{color:var(--muted);font-size:.85rem;padding:4px 8px;border-radius:8px;transition:.2s;text-decoration:none;}
+.proj-links a:hover{color:var(--text);background:var(--surface);}
+.proj-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+.proj-desc{color:var(--muted);font-size:.87rem;line-height:1.7;margin-bottom:16px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:50px;background:rgba(79,142,247,.1);color:var(--accent);border:1px solid rgba(79,142,247,.15);}
+.tag.green{background:rgba(56,201,160,.1);color:var(--accent3);border-color:rgba(56,201,160,.2);}
+.tag.purple{background:rgba(123,94,167,.12);color:#b08af5;border-color:rgba(123,94,167,.25);}
+.badge-gov{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:#f5a623;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);padding:3px 10px;border-radius:50px;margin-bottom:12px;}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2);}
+#experience .inner{max-width:900px;margin:auto;}
+.timeline{position:relative;padding-left:30px;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent3));}
+.tl-item{position:relative;margin-bottom:36px;}
+.tl-dot{position:absolute;left:-38px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);box-shadow:0 0 12px var(--accent);}
+.tl-card{padding:24px 28px;border-radius:16px;transition:.3s;}
+.tl-card:hover{border-color:rgba(79,142,247,.3);transform:translateX(4px);}
+.tl-period{font-size:.75rem;font-weight:600;color:var(--accent3);letter-spacing:.08em;margin-bottom:6px;}
+.tl-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;}
+.tl-company{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.tl-desc{color:var(--muted);font-size:.87rem;line-height:1.7;}
+
+/* CONTACT */
+#contact .inner{max-width:800px;margin:auto;text-align:center;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:40px;}
+.contact-card{padding:26px 20px;border-radius:16px;text-decoration:none;color:var(--text);transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.contact-card:hover{transform:translateY(-5px);border-color:var(--accent);background:var(--surface-hover);}
+.contact-card i{font-size:1.6rem;}
+.contact-card span{font-size:.85rem;font-weight:500;}
+.contact-card small{font-size:.75rem;color:var(--muted);}
+.contact-cta{margin-top:50px;padding:40px;border-radius:24px;background:linear-gradient(135deg,rgba(79,142,247,.08),rgba(56,201,160,.06));border:1px solid rgba(79,142,247,.15);}
+.contact-cta h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:10px;}
+.contact-cta p{color:var(--muted);margin-bottom:24px;font-size:.95rem;}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 5%;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem;position:relative;z-index:1;}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* SCROLL BAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;}
+  .hero-visual{order:-1;}
+  .hero-btns,.hero-stats{justify-content:center;}
+  .hero-desc{margin:0 auto 36px;}
+  #about .inner{grid-template-columns:1fr;}
+  .avatar-wrap{width:220px;height:220px;}
+  .avatar-inner{font-size:4rem;}
+}
+@media(max-width:600px){
+  section{padding:80px 5%;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .project-grid{grid-template-columns:1fr;}
+  .tech-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-stats{gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">IS/</div>
+  <ul class="nav-links">
+    <li><a href="#hero" class="active">Beranda</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#tech">Tech Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+  <div class="hamburger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMenu()">Beranda</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#tech" onclick="closeMenu()">Tech Stack</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#experience" onclick="closeMenu()">Pengalaman</a>
+  <a href="#contact" onclick="closeMenu()">Kontak</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Available for Projects</div>
+      <h1 class="hero-name">Hi, I'm <span class="gradient-text">Ismail</span></h1>
+      <p class="hero-role">IT Programmer · Software Developer</p>
+      <p class="hero-desc">Membangun solusi digital yang efisien dan berdampak — dari aplikasi pemerintah daerah hingga sistem enterprise. Lulusan Teknik Komputer ITS, berpengalaman sejak 2021.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Lihat Projects</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Hubungi Saya</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num gradient-text">4+</div>
+          <div class="stat-label">Tahun Exp</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num gradient-text">10+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num gradient-text">S1</div>
+          <div class="stat-label">Teknik Komputer</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal-right">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-inner">🧑‍💻</div>
+        <div class="avatar-badge">✨ ITS Graduate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="reveal-left">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Kenali Saya <span class="gradient-text">Lebih Dekat</span></h2>
+      <div class="about-text">
+        <p>Saya <strong>Ismail</strong>, seorang IT Programmer yang lahir dan besar di Sampang, Madura. Saya menyelesaikan pendidikan S1 Teknik Komputer di <strong>Institut Teknologi Sepuluh Nopember (ITS)</strong> Surabaya pada tahun 2021.</p>
+        <p>Dengan pengalaman lebih dari 4 tahun di industri, saya berfokus pada pengembangan aplikasi yang berdampak nyata bagi masyarakat — termasuk sistem aplikasi untuk pemerintah daerah Kabupaten Sampang.</p>
+        <p>Saya menyukai tantangan teknis, menulis kode yang clean & maintainable, serta terus belajar teknologi terbaru untuk menghasilkan produk terbaik.</p>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="glass about-card">
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-user"></i></div>
+          <div><div class="info-label">Nama Lengkap</div><div class="info-val">Ismail</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="info-label">Tempat, Tanggal Lahir</div><div class="info-val">Sampang, 1 Februari 1998</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(123,94,167,.14);color:#b08af5"><i class="fas fa-graduation-cap"></i></div>
+          <div><div class="info-label">Pendidikan</div><div class="info-val">S1 Teknik Komputer — ITS (2021)</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-briefcase"></i></div>
+          <div><div class="info-label">Pekerjaan</div><div class="info-val">IT Programmer</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-city"></i></div>
+          <div><div class="info-label">Domisili</div><div class="info-val">Jawa Timur, Indonesia</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="background:rgba(245,166,35,.12);color:#f5a623"><i class="fas fa-star"></i></div>
+          <div><div class="info-label">Fokus</div><div class="info-val">Web & App Development</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Tech Stack</div>
+      <h2 class="section-title">Tools & <span class="gradient-text">Teknologi</span></h2>
+      <p class="section-sub" style="margin:0 auto 50px;">Teknologi yang saya kuasai dan gunakan dalam pengembangan sehari-hari.</p>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Frontend</div>
+      <div class="tech-grid">
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.436l.337 3.752 3.436 38.5H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#fff" d="M63.962 52.455v13.763h16.998l-1.6 17.854-15.398 4.158v14.232l28.212-7.82.207-2.325 3.234-36.243.336-3.619zm0-27.856v13.762h33.256l.276-3.092.628-6.978.329-3.692z"/></svg></div>
+          <div class="tech-name">HTML5</div><div class="tech-level">Expert</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354H64.001v106.49z"/><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95z"/><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"/><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.46 4.168v14.39l28.354-7.855.208-2.335 2.406-26.89H81.127z"/><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.994H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447v13.831z"/></svg></div>
+          <div class="tech-name">CSS3</div><div class="tech-level">Expert</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"/><path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"/></svg></div>
+          <div class="tech-name">JavaScript</div><div class="tech-level">Advanced</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#61DAFB" d="M64 35.578c-15.685 0-28.421 12.736-28.421 28.421S48.315 92.421 64 92.421s28.421-12.736 28.421-28.421S79.685 35.578 64 35.578zm0 46.816c-10.166 0-18.395-8.229-18.395-18.395S53.834 45.604 64 45.604s18.395 8.229 18.395 18.395S74.166 82.394 64 82.394z"/><path fill="#61DAFB" d="M64 0C46.327 0 32 14.327 32 32c0 10.621 5.2 20.01 13.157 25.784C22.048 62.953 4 82.621 4 106c0 12.15 9.85 22 22 22s22-9.85 22-22c0-6.913-3.21-13.076-8.223-17.13C45.961 87.195 54.62 84 64 84c9.38 0 18.039 3.195 24.223 8.87C83.21 96.924 80 103.087 80 110c0 12.15 9.85 22 22 22s22-9.85 22-22c0-23.379-18.048-43.047-41.157-48.216C90.8 52.01 96 42.621 96 32 96 14.327 81.673 0 64 0zm-42 110c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zm84 0c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zM64 22c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10-4.486-10-10-10z"/></svg></div>
+          <div class="tech-name">React.js</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#7952B3" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm17 98.2l-3.9-12H50.9l-3.9 12H33.2l20-56.4h21.6l20 56.4H81zm-14-40.4l-5.8 18.4h11.6L63 57.8z"/><path fill="#fff" d="M63 57.8l-5.8 18.4h11.6L63 57.8zM50.9 86.2h24.2l3.9 12H47l3.9-12z"/></svg></div>
+          <div class="tech-name">Bootstrap</div><div class="tech-level">Expert</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path d="M12.9 128c-.8 0-1.6-.2-2.3-.7-1.4-.9-2.1-2.5-1.9-4.1l5.1-32.6L3.5 79.9c-1.2-1.2-1.6-3-.9-4.6.7-1.6 2.2-2.6 3.9-2.6l32.2-.6 24.5-58.8C63.9 11.8 65.4 11 67 11s3.1.8 3.8 2.3l24.5 58.8 32.2.6c1.7 0 3.3 1 3.9 2.6.7 1.6.3 3.4-.9 4.6l-10.3 10.7 5.1 32.6c.3 1.6-.5 3.2-1.9 4.1-1.4.9-3.2.9-4.5 0L67 109.5 16.2 127.3c-.4.5-1 .7-1.3.7z" fill="#38BDF8"/></svg></div>
+          <div class="tech-name">Tailwind</div><div class="tech-level">Advanced</div>
+        </div>
+      </div>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Backend</div>
+      <div class="tech-grid">
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#6181B6" d="M64 33.039c-33.255 0-60.219 13.887-60.219 31.023 0 17.133 26.964 31.02 60.219 31.02 33.254 0 60.22-13.887 60.22-31.02 0-17.136-26.966-31.023-60.22-31.023zm-10.332 44.533l-2.878-.285c-2.478-.259-3.686-1.469-3.686-3.681v-4.85c0-2.149 1.28-3.232 3.865-3.232h3.282c2.25 0 3.374 1.083 3.374 3.232v.752h-3.186v-.617c0-.75-.35-1.127-1.069-1.127h-2.014c-.796 0-1.176.377-1.176 1.127v4.313c0 .659.437 1.061 1.316 1.175l2.878.289c2.608.285 3.901 1.478 3.901 3.567v5.39c0 2.209-1.315 3.313-3.951 3.313H50.94c-2.637 0-3.95-1.104-3.95-3.313v-.88h3.187v.745c0 .754.385 1.129 1.152 1.129h2.285c.798 0 1.2-.375 1.2-1.129v-4.846c-.001-.686-.437-1.066-1.146-1.072zm12.81 10.474h-3.186V66.978h-3.953v-2.941h11.092v2.941H66.48v21.068zm10.943 0H74.22V64.037h3.201v20.753l5.908-20.753h3.477l5.932 20.753V64.037h3.199v24.009h-4.686l-5.212-18.682-5.418 18.682z"/><path fill="#6181B6" d="M64 1C28.162 1 1 28.162 1 64c0 35.838 27.162 63 63 63 35.837 0 63-27.162 63-63C127 28.162 99.837 1 64 1zm0 119.468c-31.049 0-56.468-25.42-56.468-56.468S32.951 7.532 64 7.532 120.468 32.951 120.468 64 95.049 120.468 64 120.468z"/></svg></div>
+          <div class="tech-name">PHP</div><div class="tech-level">Expert</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#83CD29" d="M112.771 30.334L68.148 4.963c-2.642-1.529-5.986-1.529-8.63 0L14.898 30.334c-2.641 1.529-4.315 4.343-4.315 7.365v50.602c0 3.022 1.674 5.836 4.315 7.364l11.093 6.415V54.801c0-3.22 3.07-5.77 6.304-4.947 22.71 5.843 47.987 5.843 70.698 0 3.233-.823 6.304 1.727 6.304 4.947v47.279l11.094-6.415c2.641-1.529 4.314-4.343 4.314-7.364V37.698c-.001-3.021-1.674-5.835-4.314-7.364zm-44.68 68.306l-4.091 2.362-4.091-2.362V85.568l4.091 2.362 4.091-2.362v13.072zm4.271-18.336l-8.362 4.829-8.362-4.829V67.235l8.362-4.829 8.362 4.829v13.069z"/></svg></div>
+          <div class="tech-name">Node.js</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#FF2D20" d="M106.6 23.4L88.9 5.7C86.4 3.2 83 1.8 79.5 1.8H48.5c-3.5 0-6.9 1.4-9.4 3.9L21.4 23.4c-2.5 2.5-3.9 5.9-3.9 9.4v62.4c0 3.5 1.4 6.9 3.9 9.4l17.7 17.7c2.5 2.5 5.9 3.9 9.4 3.9h31c3.5 0 6.9-1.4 9.4-3.9l17.7-17.7c2.5-2.5 3.9-5.9 3.9-9.4V32.8c0-3.5-1.4-6.9-3.9-9.4zM64 88.5c-13.5 0-24.5-11-24.5-24.5S50.5 39.5 64 39.5 88.5 50.5 88.5 64 77.5 88.5 64 88.5zm0-38.7c-7.8 0-14.2 6.4-14.2 14.2S56.2 78.2 64 78.2 78.2 71.8 78.2 64 71.8 49.8 64 49.8z"/></svg></div>
+          <div class="tech-name">Laravel</div><div class="tech-level">Advanced</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#FFD845" d="M49.33 62v13.17c0 .55.39 1.04.93 1.17l.53.13c.63.16 1.27-.29 1.27-.94V62z"/><path fill="#3776AB" d="M99.75 16h-71.5C15.9 16 6 25.9 6 38.25v51.5C6 102.1 15.9 112 28.25 112h71.5C112.1 112 122 102.1 122 89.75v-51.5C122 25.9 112.1 16 99.75 16zM64 92.5C48.26 92.5 35.5 79.74 35.5 64S48.26 35.5 64 35.5 92.5 48.26 92.5 64 79.74 92.5 64 92.5z"/><path fill="#FFD845" d="M64 44c-11.05 0-20 8.95-20 20s8.95 20 20 20 20-8.95 20-20-8.95-20-20-20zm0 32c-6.63 0-12-5.37-12-12s5.37-12 12-12 12 5.37 12 12-5.37 12-12 12z"/></svg></div>
+          <div class="tech-name">Python</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#00618A" d="M116.948 97.807c-6.863-.187-12.104.452-16.585 2.341-1.273.537-3.305.552-3.513 2.147.7.733.809 1.829 1.366 2.731 1.07 1.73 2.876 4.052 4.488 5.268 1.762 1.33 3.577 2.751 5.465 3.902 3.358 2.047 7.107 3.217 10.34 5.268 1.906 1.21 3.799 2.733 5.658 4.097.92.675 1.537 1.724 2.732 2.147v-.194c-.628-.8-.79-1.898-1.366-2.733l-2.537-2.537c-2.48-3.292-5.629-6.184-8.976-8.585-2.669-1.916-8.642-4.504-9.755-7.702l-.195-.195c1.892-.214 4.107-.898 5.854-1.367 2.934-.786 5.556-.583 8.585-1.365l4.097-1.171v-.78c-1.531-1.571-2.623-3.651-4.292-5.073-4.37-3.72-9.138-7.437-14.048-10.537-2.724-1.718-6.089-2.835-8.976-4.292-.971-.491-2.677-.746-3.318-1.562-1.517-1.932-2.342-4.382-3.511-6.633-2.449-4.717-4.854-9.868-7.024-14.831-1.48-3.384-2.447-6.72-4.293-9.756-8.86-14.567-18.396-23.358-33.169-32-3.144-1.838-6.929-2.563-10.929-3.513-2.145-.129-4.292-.26-6.438-.391-1.311-.546-2.673-2.149-3.902-2.927-4.894-3.092-17.448-9.817-21.072-.975-2.289 5.581 3.421 11.025 5.462 13.854 1.434 1.982 3.269 4.207 4.293 6.438.674 1.467.79 2.938 1.367 4.489 1.417 3.822 2.652 7.98 4.487 11.511.927 1.788 1.949 3.67 3.122 5.268.718.981 1.951 1.413 2.145 2.927-1.204 1.686-1.273 4.304-1.95 6.44-3.05 9.615-1.899 21.567 2.537 28.683 1.36 2.186 4.567 6.871 8.975 5.073 3.856-1.57 2.995-6.438 4.098-10.732.249-.974.096-1.698.585-2.341v.195l3.513 7.024c2.6 4.187 7.212 8.562 11.122 11.514 2.025 1.531 3.623 4.177 6.244 5.073v-.196h-.195c-.508-.791-1.303-1.119-1.951-1.755-1.527-1.497-3.225-3.358-4.487-5.073-3.556-4.827-6.698-10.11-9.561-15.609-1.368-2.627-2.557-5.523-3.709-8.196-.444-1.03-.438-2.589-1.364-3.122-1.263 1.958-3.118 3.542-4.098 5.854-1.561 3.696-1.762 8.204-2.341 12.878-.342.122-.19.038-.39.194-2.718-.655-3.672-3.452-4.683-5.853-2.554-6.07-3.029-15.842-.781-22.829.582-1.809 3.21-7.501 2.146-9.172-.508-1.667-2.184-2.63-3.121-3.903-1.161-1.574-2.319-3.646-3.124-5.464-2.09-4.731-3.066-10.044-5.267-14.828-1.053-2.287-2.832-4.602-4.293-6.634-1.617-2.253-3.429-3.912-4.683-6.635-.445-.969-1.051-2.521-.391-3.513.21-.671.508-.951 1.171-1.17 1.131-.39 4.264.29 5.464.779 3.979 1.62 7.307 3.168 10.537 5.464 1.582 1.12 3.181 3.286 5.073 3.902h2.146c3.357.751 7.119.23 10.244 1.17 5.541 1.69 10.505 4.311 14.999 7.219 13.728 8.668 24.973 21.01 32.577 35.898 1.237 2.362 1.768 4.627 2.927 7.024 2.239 4.745 5.057 9.619 7.415 14.246 2.35 4.61 4.636 9.26 7.998 13.07 1.752 1.994 8.568 3.083 11.318 4.194 1.688.67 4.447 1.338 6.048 2.341 3.149 1.964 6.235 4.318 9.172 6.44 1.469 1.055 6.009 3.336 6.244 5.268z"/><path fill="#00618A" d="M28.034 23.107c-1.983.042-3.358.198-4.884.586v.195h.195c.952 1.955 2.638 3.209 3.708 5.073l2.927 6.049.195-.195c1.811-1.278 2.638-3.309 2.634-6.244-.73-.76-.822-1.736-1.462-2.537-.622-1.46-2.012-2.252-3.313-2.927z"/></svg></div>
+          <div class="tech-name">MySQL</div><div class="tech-level">Advanced</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#439934" d="M109.634 57.234c-2.93-.118-5.209.199-7.133.993-.545.227-1.418.227-1.505.92.3.308.345.789.587 1.185.454.742 1.225 1.736 1.924 2.259.757.57 1.534 1.18 2.346 1.686 1.44.877 3.049 1.38 4.436 2.256.815.516 1.631 1.171 2.43 1.758.394.29.659.738 1.172.92v-.082c-.269-.344-.339-.814-.587-1.172l-1.088-1.09c-1.065-1.412-2.414-2.653-3.852-3.684-1.145-.821-3.709-1.932-4.185-3.306l-.084-.084c.811-.09 1.762-.387 2.513-.588 1.26-.337 2.385-.25 3.684-.585l1.758-.503v-.335c-.658-.674-1.126-1.568-1.843-2.178-1.875-1.595-3.923-3.19-6.028-4.522-1.169-.737-2.614-1.216-3.854-1.843-.417-.21-1.149-.32-1.423-.67-.65-.83-1.005-1.881-1.505-2.847-1.052-2.024-2.084-4.236-3.015-6.363-.636-1.452-1.05-2.884-1.842-4.189-3.803-6.252-7.9-10.024-14.235-13.736-1.35-.789-2.975-1.1-4.69-1.507-.921-.055-1.842-.11-2.764-.168-.562-.234-1.147-.922-1.675-1.257-2.1-1.327-7.489-4.215-9.044-.419-.982 2.395 1.468 4.73 2.345 5.946.615.851 1.403 1.806 1.843 2.764.29.63.34 1.262.587 1.926.608 1.64 1.139 3.425 1.926 4.941.398.768.836 1.575 1.34 2.261.308.421.838.608.921 1.257-.517.724-.547 1.848-.837 2.764-1.31 4.129-.815 9.254 1.089 12.307.583.938 1.96 2.949 3.852 2.177 1.655-.673 1.286-2.763 1.759-4.606.107-.418.041-.729.251-1.005v.084l1.507 3.014c1.116 1.797 3.096 3.675 4.773 4.942.868.657 1.555 1.793 2.679 2.177v-.084h-.084c-.218-.34-.559-.48-.837-.754-.655-.642-1.383-1.441-1.927-2.177-1.526-2.072-2.875-4.338-4.104-6.699-.587-1.128-1.097-2.372-1.591-3.519-.19-.443-.188-1.112-.586-1.34-.543.84-1.338 1.52-1.759 2.512-.67 1.587-.757 3.52-1.005 5.527-.147.053-.082.016-.167.083-1.167-.281-1.577-1.482-2.011-2.513-1.097-2.605-1.301-6.801-.335-9.798.25-.777 1.379-3.22.921-3.937-.218-.716-.938-1.129-1.34-1.675-.498-.676-.995-1.565-1.341-2.346-.897-2.031-1.315-4.311-2.262-6.364-.451-.982-1.216-1.976-1.842-2.847-.694-.967-1.471-1.68-2.012-2.846-.191-.416-.451-1.082-.168-1.507.09-.288.218-.408.503-.502.485-.167 1.831.124 2.345.334 1.708.695 3.137 1.36 4.522 2.345.68.482 1.367 1.411 2.178 1.675h.921c1.441.322 3.055.098 4.397.502 2.379.725 4.508 1.851 6.44 3.099 5.893 3.72 10.72 9.017 13.986 15.408.53 1.014.759 1.987 1.257 3.015.96 2.036 2.171 4.129 3.182 6.112 1.009 1.98 1.991 3.974 3.434 5.611.752.856 3.677 1.324 4.858 1.801.724.288 1.909.573 2.596 1.005 1.352.843 2.675 1.854 3.937 2.763.632.453 2.579 1.432 2.68 2.261z"/></svg></div>
+          <div class="tech-name">MongoDB</div><div class="tech-level">Intermediate</div>
+        </div>
+      </div>
+    </div>
+    <div class="tech-cat reveal">
+      <div class="tech-cat-label">Tools & DevOps</div>
+      <div class="tech-grid">
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#F34F29" d="M124.742 58.378L69.625 3.264a8.614 8.614 0 00-6.148-2.535 8.614 8.614 0 00-6.148 2.535l-12.17 12.174 15.378 15.38a10.205 10.205 0 0112.924 12.99l14.825 14.825a10.205 10.205 0 0112.991 12.924 10.215 10.215 0 01-13.278 5.674 10.215 10.215 0 01-5.674-13.278l-13.828-13.827v36.38a10.215 10.215 0 016.628 18.868 10.215 10.215 0 01-11.206-16.588 10.215 10.215 0 013.578-2.28V49.48a10.215 10.215 0 01-6.628-18.868 10.215 10.215 0 0111.206 16.588 10.215 10.215 0 01-3.578 2.28V50a10.215 10.215 0 016.628 18.868l-12.17 12.174c-1.636 1.636-3.801 2.535-6.148 2.535s-4.512-.9-6.148-2.535l-12.17-12.174a8.614 8.614 0 01-2.535-6.148 8.614 8.614 0 012.535-6.148l55.117-55.114z"/></svg></div>
+          <div class="tech-name">Git</div><div class="tech-level">Advanced</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#019BC6" d="M124.8 52.1L75.9 3.2C74.2 1.5 72 .6 69.7.6s-4.5.9-6.2 2.6l-11.9 12 15.1 15.1c1.6-1 3.5-1.6 5.5-1.6 5.9 0 10.7 4.8 10.7 10.7 0 2-.6 3.9-1.6 5.5L96 59.5c1.6-1 3.5-1.6 5.5-1.6 5.9 0 10.7 4.8 10.7 10.7 0 5.9-4.8 10.7-10.7 10.7-5.9 0-10.7-4.8-10.7-10.7 0-2 .6-3.9 1.6-5.5L77.7 48.4v35.7c1.5.7 2.9 1.7 4.1 2.9 1.7 1.7 2.6 3.9 2.6 6.2s-.9 4.5-2.6 6.2c-1.7 1.7-3.9 2.6-6.2 2.6s-4.5-.9-6.2-2.6c-1.7-1.7-2.6-3.9-2.6-6.2 0-2.3.9-4.5 2.6-6.2 1.2-1.2 2.6-2.1 4.1-2.9V47.8c-1.5-.7-2.9-1.7-4.1-2.9-3.1-3.1-3.4-7.9-.9-11.3L53.4 18.5 3.2 68.6c-1.7 1.7-2.6 3.9-2.6 6.2s.9 4.5 2.6 6.2l48.9 48.9c1.7 1.7 3.9 2.6 6.2 2.6s4.5-.9 6.2-2.6l60.3-60.3c1.7-1.7 2.6-3.9 2.6-6.2s-1-4.6-2.6-6.3z"/></svg></div>
+          <div class="tech-name">Docker</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#F4911E" d="M64 7.1C33.9 7.1 9.4 31.6 9.4 61.7c0 22 13.2 41 32.4 49.6v-28.5h-9.8V70.3h9.8V62c0-9.6 5.7-14.9 14.4-14.9 4.2 0 8.5.7 8.5.7v9.4H60c-4.7 0-6.2 2.9-6.2 5.9v7.1h10.5l-1.7 12.5H53.9v28.5c19.2-8.6 32.4-27.6 32.4-49.6C118.6 31.6 94.1 7.1 64 7.1z"/></svg></div>
+          <div class="tech-name">VPS/Cloud</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#FFA000" d="M2 107.3L23.6 21l47.9 83Z"/><path fill="#F57F17" d="M71.5 104l-47.9-83 89.9.3Z"/><path fill="#FFCA28" d="M113.5 21.3 71.5 104 23.6 21Z"/></svg></div>
+          <div class="tech-name">Firebase</div><div class="tech-level">Intermediate</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#6C6CFF" d="M64 8C33.1 8 8 33.1 8 64s25.1 56 56 56 56-25.1 56-56S94.9 8 64 8zm0 8c26.5 0 48 21.5 48 48S90.5 112 64 112 16 90.5 16 64 37.5 16 64 16zm-8 16v24H40v16h16v24h16V72h16V56H72V32H56z"/></svg></div>
+          <div class="tech-name">REST API</div><div class="tech-level">Advanced</div>
+        </div>
+        <div class="glass tech-card">
+          <div class="tech-icon"><svg viewBox="0 0 128 128" width="36" height="36"><path fill="#EF5B25" d="M76 8C40.7 8 12 36.7 12 72c0 20.7 9.8 39.1 25 51l5-14.3C32.5 100 26 86.8 26 72c0-27.6 22.4-50 50-50 12.8 0 24.4 4.8 33.2 12.8l-10.6 10.6C92.8 39.6 84.8 36 76 36c-19.9 0-36 16.1-36 36s16.1 36 36 36c9.3 0 17.7-3.6 24-9.4l10.6 10.6C101.9 118.2 89.6 124 76 124c-28.7 0-52-23.3-52-52S47.3 20 76 20c13.6 0 25.9 5.2 35.2 13.6l10.6-10.6C110.4 13.2 94.1 8 76 8z"/></svg></div>
+          <div class="tech-name">Postman</div><div class="tech-level">Advanced</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Projects <span class="gradient-text">Unggulan</span></h2>
+      <p class="section-sub">Beberapa karya yang pernah saya bangun, dari sistem pemerintah hingga aplikasi enterprise.</p>
+    </div>
+    <div class="project-grid">
+      <div class="glass project-card reveal">
+        <div class="badge-gov"><i class="fas fa-landmark"></i> Pemerintah Daerah</div>
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-building-columns"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Informasi Layanan Publik</div>
+        <div class="proj-desc">Aplikasi layanan publik terintegrasi untuk Pemerintah Kabupaten Sampang — memudahkan warga dalam mengakses layanan administrasi secara digital.</div>
+        <div class="proj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag green">Bootstrap</span><span class="tag purple">REST API</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.1s">
+        <div class="badge-gov"><i class="fas fa-landmark"></i> Pemerintah Daerah</div>
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-chart-bar"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Dashboard Monitoring Daerah</div>
+        <div class="proj-desc">Dashboard analitik real-time untuk monitoring data dan pelaporan kinerja OPD di lingkungan Pemkab Sampang dengan visualisasi data interaktif.</div>
+        <div class="proj-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag green">Chart.js</span><span class="tag purple">MongoDB</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.2s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(123,94,167,.14);color:#b08af5"><i class="fas fa-users"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Manajemen SDM</div>
+        <div class="proj-desc">Aplikasi manajemen sumber daya manusia (HRD) dengan fitur absensi, penggajian, dan manajemen cuti berbasis web yang responsif.</div>
+        <div class="proj-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag green">MySQL</span><span class="tag purple">Tailwind</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.1s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(245,166,35,.12);color:#f5a623"><i class="fas fa-store"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Platform E-Commerce</div>
+        <div class="proj-desc">Platform belanja online dengan fitur manajemen produk, cart, payment gateway, dan dashboard admin yang lengkap untuk UMKM lokal.</div>
+        <div class="proj-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag green">PostgreSQL</span><span class="tag purple">Midtrans</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.2s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(79,142,247,.12);color:var(--accent)"><i class="fas fa-mobile-alt"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Aplikasi Mobile Warga</div>
+        <div class="proj-desc">Aplikasi mobile berbasis PWA untuk pengaduan dan pelaporan warga dengan sistem notifikasi real-time dan tracking status laporan.</div>
+        <div class="proj-tags"><span class="tag">PWA</span><span class="tag">JavaScript</span><span class="tag green">Firebase</span><span class="tag purple">FCM</span></div>
+      </div>
+      <div class="glass project-card reveal" style="transition-delay:.3s">
+        <div class="proj-header">
+          <div class="proj-icon" style="background:rgba(56,201,160,.12);color:var(--accent3)"><i class="fas fa-database"></i></div>
+          <div class="proj-links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+        <div class="proj-title">Sistem Arsip Digital</div>
+        <div class="proj-desc">Aplikasi pengelolaan arsip dokumen digital dengan fitur OCR, pencarian cerdas, dan sistem versioning dokumen untuk instansi pemerintah.</div>
+        <div class="proj-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag green">OCR</span><span class="tag purple">Elasticsearch</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Pengalaman <span class="gradient-text">Profesional</span></h2>
+      <p class="section-sub" style="margin:0 auto 50px;">Perjalanan karier dan pencapaian profesional saya.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">2021 — Sekarang</div>
+          <div class="tl-title">IT Programmer</div>
+          <div class="tl-company"><i class="fas fa-building" style="color:var(--accent);margin-right:6px;"></i>Perusahaan / Instansi — Jawa Timur</div>
+          <div class="tl-desc">Bertanggung jawab atas pengembangan dan pemeliharaan aplikasi berbasis web. Memimpin implementasi sistem untuk kebutuhan pemerintah daerah, termasuk perencanaan arsitektur, pengembangan backend & frontend, hingga deployment dan maintenance.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent3);box-shadow:0 0 12px var(--accent3);"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">2021</div>
+          <div class="tl-title">Lulus S1 Teknik Komputer</div>
+          <div class="tl-company"><i class="fas fa-university" style="color:var(--accent3);margin-right:6px;"></i>Institut Teknologi Sepuluh Nopember (ITS) — Surabaya</div>
+          <div class="tl-desc">Menyelesaikan studi S1 Teknik Komputer dengan fokus pada pengembangan perangkat lunak, jaringan komputer, dan sistem embedded. Aktif dalam organisasi dan proyek penelitian kampus.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#b08af5;box-shadow:0 0 12px #b08af5;"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">Project Milestone</div>
+          <div class="tl-title">Pengembang Aplikasi Pemkab Sampang</div>
+          <div class="tl-company"><i class="fas fa-landmark" style="color:#f5a623;margin-right:6px;"></i>Pemerintah Kabupaten Sampang — Madura</div>
+          <div class="tl-desc">Berkontribusi dalam membangun ekosistem digital untuk pemerintah daerah Kabupaten Sampang. Menghasilkan beberapa aplikasi yang aktif digunakan oleh instansi dan masyarakat setempat.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#f5a623;box-shadow:0 0 12px #f5a623;"></div>
+        <div class="glass tl-card">
+          <div class="tl-period">1998 — 2021</div>
+          <div class="tl-title">Perjalanan Pendidikan</div>
+          <div class="tl-company"><i class="fas fa-graduation-cap" style="color:#f5a623;margin-right:6px;"></i>Sampang → Surabaya</div>
+          <div class="tl-desc">Lahir di Sampang, 1 Februari 1998. Menempuh pendidikan dasar di Sampang kemudian melanjutkan ke jenjang S1 di ITS Surabaya — salah satu kampus teknik terbaik di Indonesia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Mari <span class="gradient-text">Berkolaborasi</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Punya proyek menarik atau ingin berdiskusi? Jangan ragu untuk menghubungi saya!</p>
+    </div>
+    <div class="contact-grid reveal">
+      <a href="mailto:ismail@email.com" class="glass contact-card">
+        <i class="fas fa-envelope" style="color:var(--accent)"></i>
+        <span>Email</span>
+        <small>ismail@email.com</small>
+      </a>
+      <a href="https://linkedin.com/in/ismail" target="_blank" class="glass contact-card">
+        <i class="fab fa-linkedin" style="color:#0A66C2"></i>
+        <span>LinkedIn</span>
+        <small>linkedin.com/in/ismail</small>
+      </a>
+      <a href="https://github.com/ismail" target="_blank" class="glass contact-card">
+        <i class="fab fa-github" style="color:var(--text)"></i>
+        <span>GitHub</span>
+        <small>github.com/ismail</small>
+      </a>
+      <a href="https://wa.me/628xxxxxxxxx" target="_blank" class="glass contact-card">
+        <i class="fab fa-whatsapp" style="color:#25D366"></i>
+        <span>WhatsApp</span>
+        <small>+62 8xx xxxx xxxx</small>
+      </a>
+    </div>
+    <div class="contact-cta reveal">
+      <h3>Siap Membangun Sesuatu yang <span class="gradient-text">Luar Biasa?</span></h3>
+      <p>Saya terbuka untuk peluang freelance, kolaborasi proyek, atau diskusi seputar teknologi.</p>
+      <a href="mailto:ismail@email.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Kirim Pesan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted with ❤️ by <strong style="color:var(--accent)">Ismail</strong> · IT Programmer · ITS Graduate 2021</p>
+  <p style="margin-top:6px;font-size:.75rem;">© 2025–2026 All rights reserved.</p>
+</footer>
+
+<script>
+// REVEAL ON SCROLL
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+// ACTIVE NAV
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-120) cur=s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+  });
+});
+
+// MOBILE MENU
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+</script>
+</body>
+</html>
